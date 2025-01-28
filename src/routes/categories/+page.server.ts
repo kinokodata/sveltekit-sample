@@ -1,11 +1,10 @@
-import {findById} from "$lib/server/models/productCategory";
+import {findAll} from "$lib/server/models/productCategory";
 import * as ProductCategoryModel from "$lib/server/models/productCategory";
 import {redirect} from "@sveltejs/kit";
 
-export async function load ({ params }) {
-    const id = parseInt(params.id);
-    const category = await findById(id);
-    return { category };
+export async function load() {
+    const categories = await findAll();
+    return { categories };
 }
 
 export const actions = {
