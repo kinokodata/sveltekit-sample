@@ -24,7 +24,7 @@ export async function findAll(): Promise<Product[]> {
         id: row.id,
         name: row.name,
         basePrice: row.base_price,
-        createdAt: row.created_at,
+        createdAt: new Date(row.created_at),
         category: row.product_categories
     }));
 }
@@ -51,7 +51,7 @@ export async function findById(id: number): Promise<Product> {
         id: data.id,
         name: data.name,
         basePrice: data.base_price,
-        createdAt: data.created_at,
+        createdAt: new Date(data.created_at),
         category: data.product_categories
     };
 }
@@ -93,7 +93,7 @@ export async function create(name: string, categoryId: number, basePrice: number
         id: data.id,
         name: data.name,
         basePrice: data.base_price,
-        createdAt: data.created_at,
+        createdAt: new Date(data.created_at),
         category: data.product_categories
     };
 }
@@ -144,7 +144,7 @@ export async function update(
         id: data.id,
         name: data.name,
         basePrice: data.base_price,
-        createdAt: data.created_at,
+        createdAt: new Date(data.created_at),
         category: data.product_categories
     };
 }
