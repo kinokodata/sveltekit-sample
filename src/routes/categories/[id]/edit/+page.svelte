@@ -2,33 +2,49 @@
     let { data } = $props();
 </script>
 
-<h1>カテゴリ編集</h1>
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-6">カテゴリ編集</h1>
 
-<form method="POST" action="?/update">
-    <div>
-        <label>
-            カテゴリ名
-            <input
-                    name="name"
-                    type="text"
-                    required
-                    value={data.category.name}
-            >
-        </label>
-    </div>
+    <div class="bg-white rounded-lg shadow p-6">
+        <form method="POST" action="?/update" class="space-y-6">
+            <div class="space-y-2">
+                <label class="block font-medium text-gray-700">
+                    カテゴリ名
+                    <input
+                            name="name"
+                            type="text"
+                            required
+                            value={data.category.name}
+                            class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
+                    >
+                </label>
+            </div>
 
-    <div>
-        <label>
-            説明
-            <textarea
-                    name="description"
-                    rows="3"
-            >{data.category.description || ''}</textarea>
-        </label>
-    </div>
+            <div class="space-y-2">
+                <label class="block font-medium text-gray-700">
+                    説明
+                    <textarea
+                            name="description"
+                            rows="3"
+                            class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2"
+                    >{data.category.description || ''}</textarea>
+                </label>
+            </div>
 
-    <div>
-        <a href="/categories/{data.category.id}">キャンセル</a>
-        <button type="submit">更新</button>
+            <div class="flex items-center space-x-4 pt-4">
+                <a
+                        href="/categories/{data.category.id}"
+                        class="text-gray-600 hover:text-gray-800 font-medium"
+                >
+                    キャンセル
+                </a>
+                <button
+                        type="submit"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+                >
+                    更新
+                </button>
+            </div>
+        </form>
     </div>
-</form>
+</div>

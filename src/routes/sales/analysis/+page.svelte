@@ -97,20 +97,25 @@
     }
 </script>
 
-<div>
-    <h3>表示する商品</h3>
-    <div>
-        {#each productCheckBoxes as box}
-            <label>
-                <input
-                        type="checkbox"
-                        checked={box.checked}
-                        on:change={() => handleCheckboxChange(box.productId)}
-                />
-                {box.data[0].product.name}
-            </label>
-        {/each}
+<div class="container mx-auto p-6">
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+        <h3 class="text-lg font-bold mb-4">表示する商品</h3>
+        <div class="flex flex-wrap gap-4 mb-6">
+            {#each productCheckBoxes as box}
+                <label class="flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-lg hover:bg-gray-100 cursor-pointer">
+                    <input
+                            type="checkbox"
+                            checked={box.checked}
+                            on:change={() => handleCheckboxChange(box.productId)}
+                            class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                    />
+                    <span class="text-gray-700">{box.data[0].product.name}</span>
+                </label>
+            {/each}
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-6" style="height: 70vh">
+        <canvas id="productSalesChart"></canvas>
     </div>
 </div>
-
-<canvas id="productSalesChart"></canvas>
