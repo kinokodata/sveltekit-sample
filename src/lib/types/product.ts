@@ -5,5 +5,5 @@ export interface Product {
     name: string;               // 商品名
     category: ProductCategory;  // 商品カテゴリの情報
     basePrice: number;          // 価格
-    createdAt: string;          // 作成日（日付文字列）
+    createdAt: Date;            // 作成日（日付文字列）
 }
