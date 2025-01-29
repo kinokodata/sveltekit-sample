@@ -14,7 +14,7 @@
     <p>{data.category.description}</p>
 {/if}
 
-<a href="/categories">一覧に戻る</a>
+<a href="/categories">一覧に戻る</a>　<a href="/categories/{data.category.id}/edit">編集</a>
 <form method="POST" action="?/delete">
     <input type="hidden" name="id" value={data.category.id}>
     <button type="submit">削除</button>

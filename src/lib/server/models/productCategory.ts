@@ -40,9 +40,14 @@ export async function findById(id: number): Promise<ProductCategory | null> {
  * 新規商品カテゴリを作成
  */
 export async function create(name: string, description?: string): Promise<ProductCategory> {
+    // 名前が空文字またはスペースのみの場合はエラー
+    if (!name || !name.trim()) {
+        throw error(400, { message: "カテゴリ名は必須です" });
+    }
+
     const { data, error: err } = await supabase
         .from("product_categories")
-        .insert([{ name, description }])
+        .insert([{ name: name.trim(), description }])
         .select()
         .single();
 

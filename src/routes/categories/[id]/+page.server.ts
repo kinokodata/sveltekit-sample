@@ -12,8 +12,8 @@ export const actions = {
     // 削除アクション
     delete: async ({ request }) => {
         const formData = await request.formData();
-        const id = Number(formData.get('id'));
+        const id = Number(formData.get("id"));
         await ProductCategoryModel.deleteById(id);
-        throw redirect(303, '/categories');
+        throw redirect(303, "/categories");
     }
 };

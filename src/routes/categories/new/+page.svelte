@@ -22,7 +22,7 @@
     </div>
 
     <div>
-        <a href="/product-categories">キャンセル</a>
+        <a href="/categories">キャンセル</a>
         <button type="submit">作成</button>
     </div>
 </form>
