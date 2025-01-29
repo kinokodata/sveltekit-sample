@@ -5,6 +5,13 @@
 <div class="container mx-auto p-6">
     <h1 class="text-2xl font-bold mb-6">商品カテゴリ一覧</h1>
 
+    <a
+            href="/categories/new"
+            class="text-blue-600 hover:text-blue-800 font-medium"
+    >
+        商品カテゴリを追加
+    </a>
+
     <ul class="space-y-4">
         {#each data.categories as category}
             <li class="flex items-center justify-between p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">

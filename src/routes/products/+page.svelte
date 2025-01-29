@@ -5,6 +5,8 @@
 <div class="container mx-auto p-6">
     <h1 class="text-2xl font-bold mb-6">商品一覧</h1>
 
+    <a href="/products/new">商品を追加</a>
+
     <ul class="space-y-4">
         {#each data.products as product}
             <li class="flex items-center justify-between p-4 bg-white rounded-lg shadow hover:shadow-md transition-shadow">
