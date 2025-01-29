@@ -17,13 +17,8 @@
     ];
 
     let dailySalesProducts: {productId: number, data: DailySales[]}[] = data.dailySalesProducts;
-    let productCheckBoxes = dailySalesProducts.map(v => {
-        return {
-            productId: v.productId,
-            checked: false,
-            data: v.data
-        };
-    });
+
+    let productCheckBoxes: {productId: number, checked: boolean, data: DailySales[]}[];
 
     let salesChart: cjs.Chart;
 
@@ -55,6 +50,14 @@
     }
 
     onMount(() => {
+        productCheckBoxes = dailySalesProducts.map(v => {
+            return {
+                productId: v.productId,
+                checked: false,
+                data: v.data
+            };
+        });
+
         salesChart = new cjs.Chart(
             document.getElementById("productSalesChart") as HTMLCanvasElement,
             {
