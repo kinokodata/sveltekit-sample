@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 
 export function load() {
-    throw redirect(308, '/sales/analysis');  // /products ページにリダイレクト
+    throw redirect(302, '/sales/analysis');  // /products ページにリダイレクト
 }
