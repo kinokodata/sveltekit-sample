@@ -60,10 +60,21 @@ export async function findById(id: number): Promise<Product> {
  * 新規商品を作成
  */
 export async function create(name: string, categoryId: number, basePrice: number): Promise<Product> {
+    // バリデーション
+    if (!name || !name.trim()) {
+        throw error(400, { message: "商品名は必須です" });
+    }
+    if (basePrice <= 0) {
+        throw error(400, { message: "価格は0より大きい値を指定してください" });
+    }
+    if (categoryId <= 0) {
+        throw error(400, { message: "有効なカテゴリIDを指定してください" });
+    }
+
     const { data, error: err } = await supabase
         .from("products")
         .insert([{
-            name,
+            name: name.trim(),
             category_id: categoryId,
             base_price: basePrice
         }])
@@ -95,9 +106,24 @@ export async function update(
     { name, categoryId, basePrice }: { name?: string; categoryId?: number; basePrice?: number }
 ): Promise<Product> {
     const updateData: Record<string, unknown> = {};
-    if (name) updateData.name = name;
-    if (categoryId) updateData.category_id = categoryId;
-    if (basePrice !== undefined) updateData.base_price = basePrice;
+    if (name) {
+        if (!name.trim()) {
+            throw error(400, { message: "商品名は必須です" });
+        }
+        updateData.name = name.trim();
+    }
+    if (categoryId !== undefined) {
+        if (categoryId <= 0) {
+            throw error(400, { message: "有効なカテゴリIDを指定してください" });
+        }
+        updateData.category_id = categoryId;
+    }
+    if (basePrice !== undefined) {
+        if (basePrice <= 0) {
+            throw error(400, { message: "価格は0より大きい値を指定してください" });
+        }
+        updateData.base_price = basePrice;
+    }
 
     const { data, error: err } = await supabase
         .from("products")
@@ -127,6 +153,17 @@ export async function update(
  * 商品を削除
  */
 export async function deleteById(id: number): Promise<void> {
+    // 削除前に商品の存在確認
+    const { data: existingProduct, error: findErr } = await supabase
+        .from("products")
+        .select()
+        .eq("id", id)
+        .single();
+
+    if (findErr || !existingProduct) {
+        throw error(404, { message: "指定された商品が見つかりません" });
+    }
+
     const { error: err } = await supabase
         .from("products")
         .delete()

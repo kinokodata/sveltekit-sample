@@ -38,7 +38,7 @@
                     name="basePrice"
                     type="number"
                     required
-                    value={data.product.name}
+                    value={data.product.basePrice}
             >
         </label>
     </div>

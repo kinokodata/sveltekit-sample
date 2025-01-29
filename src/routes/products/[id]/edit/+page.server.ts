@@ -17,6 +17,6 @@ export const actions = {
         const id = Number(params.id);
 
         await ProductModel.update(id, { name, categoryId, basePrice });
-        throw redirect(303, `/categories/${id}`);
+        throw redirect(303, `/products/${id}`);
     }
 };

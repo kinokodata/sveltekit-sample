@@ -15,7 +15,7 @@
     <p>価格：{data.product.basePrice}</p>
 {/if}
 
-<a href="/products">一覧に戻る</a>
+<a href="/products">一覧に戻る</a>　<a href="/products/{data.product.id}/edit">編集</a>
 <form method="POST" action="?/delete">
     <input type="hidden" name="id" value={data.product.id}>
     <button type="submit">削除</button>
