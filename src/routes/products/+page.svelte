@@ -4,6 +4,8 @@
 
 <h1>商品一覧</h1>
 
+<a href="/priducts/new">商品を追加</a>
+
 <ul>
     {#each data.products as product}
         <li>

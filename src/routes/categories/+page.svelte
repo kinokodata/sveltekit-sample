@@ -4,6 +4,8 @@
 
 <h1>商品カテゴリ一覧</h1>
 
+<a href="/categories/new">商品カテゴリを追加</a>
+
 <ul>
     {#each data.categories as category}
         <li>
