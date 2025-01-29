@@ -25,12 +25,12 @@ export async function findAll(): Promise<DailySales[]> {
     return data.map(row => {
         return {
             id: row.id,
-            saleDate: row.sale_date,
+            saleDate: new Date(row.sale_date),
             product: {
                     id: row.products.id,
                     name: row.products.name,
                     basePrice: row.products.base_price,
-                    createdAt: row.products.created_at,
+                    createdAt: new Date(row.products.created_at),
                     category: {
                         id: row.products.product_categories.id,
                         name: row.products.product_categories.name,
@@ -72,12 +72,12 @@ export async function findSalesWhereProductId(productId: number): Promise<DailyS
     return data.map(row => {
         return {
             id: row.id,
-            saleDate: row.sale_date,
+            saleDate: new Date(row.sale_date),
             product: {
                 id: row.product.id,
                 name: row.product.name,
                 basePrice: row.product.base_price,
-                createdAt: row.product.created_at,
+                createdAt: new Date(row.product.created_at),
                 category: {
                     id: row.product.category.id,
                     name: row.product.category.name,

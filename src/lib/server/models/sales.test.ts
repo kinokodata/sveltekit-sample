@@ -1,4 +1,5 @@
 import { findSalesWhereProductId, findAll } from "./sales";
+import type {ProductCategory} from "$lib/types/productCategory";
 
 describe("日別売上モデル", () => {
     describe("findSalesWhereProductId", () => {
@@ -16,26 +17,18 @@ describe("日別売上モデル", () => {
             const firstSale = result[0];
 
             // DailySales型の構造チェック
-            expect(firstSale).toEqual(
-                expect.objectContaining({
-                    id: expect.any(Number),
-                    saleDate: expect.any(String),
-                    quantity: expect.any(Number),
-                    totalAmount: expect.any(Number),
-                    product: expect.any(Object),
-                })
-            );
+            // DailySales型の構造チェック
+            expect(typeof firstSale.id).toBe("number");
+            expect(typeof firstSale.quantity).toBe("number");
+            expect(typeof firstSale.totalAmount).toBe("number");
+            expect(typeof firstSale.product.basePrice).toBe("number");
+            expect(firstSale.saleDate.getFullYear()).toBeGreaterThan(1970);
 
             // Product型の構造チェック
-            expect(firstSale.product).toEqual(
-                expect.objectContaining({
-                    id: expect.any(Number),
-                    name: expect.any(String),
-                    basePrice: expect.any(Number),
-                    createdAt: expect.any(String),
-                    category: expect.any(Object),
-                })
-            );
+            expect(typeof firstSale.product.id).toBe("number");
+            expect(typeof firstSale.product.name).toBe("string");
+            expect(typeof firstSale.product.basePrice).toBe("number");
+            expect(firstSale.product.createdAt.getFullYear()).toBeGreaterThan(1970);
 
             // ProductCategory型の構造チェック
             expect(firstSale.product.category).toEqual(
@@ -76,26 +69,17 @@ describe("日別売上モデル", () => {
             const firstSale = result[0];
 
             // DailySales型の構造チェック
-            expect(firstSale).toEqual(
-                expect.objectContaining({
-                    id: expect.any(Number),
-                    saleDate: expect.any(String),
-                    quantity: expect.any(Number),
-                    totalAmount: expect.any(Number),
-                    product: expect.any(Object),
-                })
-            );
+            expect(typeof firstSale.id).toBe("number");
+            expect(typeof firstSale.quantity).toBe("number");
+            expect(typeof firstSale.totalAmount).toBe("number");
+            expect(typeof firstSale.product.basePrice).toBe("number");
+            expect(firstSale.saleDate.getFullYear()).toBeGreaterThan(1970);
 
             // Product型の構造チェック
-            expect(firstSale.product).toEqual(
-                expect.objectContaining({
-                    id: expect.any(Number),
-                    name: expect.any(String),
-                    basePrice: expect.any(Number),
-                    createdAt: expect.any(String),
-                    category: expect.any(Object),
-                })
-            );
+            expect(typeof firstSale.product.id).toBe("number");
+            expect(typeof firstSale.product.name).toBe("string");
+            expect(typeof firstSale.product.basePrice).toBe("number");
+            expect(firstSale.product.createdAt.getFullYear()).toBeGreaterThan(1970);
 
             // ProductCategory型の構造チェック
             expect(firstSale.product.category).toEqual(
@@ -118,8 +102,8 @@ describe("日別売上モデル", () => {
                 expect(typeof sale.product.basePrice).toBe("number");
 
                 // 有効な日付文字列であることを確認
-                expect(isNaN(Date.parse(sale.saleDate))).toBe(false);
-                expect(isNaN(Date.parse(sale.product.createdAt))).toBe(false);
+                expect(sale.saleDate.getFullYear()).toBeGreaterThan(1970);
+                expect(sale.product.createdAt.getFullYear()).toBeGreaterThan(1970);
             }
         });
 
