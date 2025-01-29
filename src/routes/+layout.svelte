@@ -3,7 +3,7 @@
     <div>
         <h1>売上分析ツール</h1>
 
-        <nav class="mt-4">
+        <nav>
             <a href="/sales/analysis">
                 <span>売上分析</span>
             </a>
