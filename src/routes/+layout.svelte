@@ -1,3 +1,7 @@
+<script>
+    import '../app.css';
+</script>
+
 <div class="flex min-h-screen">
     <!-- Menu -->
     <div class="w-64 bg-gray-800 text-white p-6">

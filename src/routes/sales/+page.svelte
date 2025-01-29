@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type {LayoutData} from "../../../.svelte-kit/types/src/routes/$types";
+    import type {LayoutData} from "./$types";
 
     export let data: LayoutData;
 
@@ -13,52 +13,42 @@
     ];
 
     const dailySalesList = data.dailySales.map(item => ({
-            date: new Date(item.saleDate).toLocaleDateString("ja-JP"),
-            productName: item.product.name,
-            categoryName: item.product.category.name,
-            basePrice: item.product.basePrice.toLocaleString(),
-            quantity: item.quantity.toLocaleString(),
-            totalAmount: `¥${item.totalAmount.toLocaleString()}`
-        }));
-
+        date: new Date(item.saleDate).toLocaleDateString("ja-JP"),
+        productName: item.product.name,
+        categoryName: item.product.category.name,
+        basePrice: item.product.basePrice.toLocaleString(),
+        quantity: item.quantity.toLocaleString(),
+        totalAmount: `¥${item.totalAmount.toLocaleString()}`
+    }));
 </script>
 
-<div>
-    <h1>売上データ</h1>
-    <table>
-        <thead>
-        <tr>
-            {#each columns as column}
-                <th>{column.label}</th>
-            {/each}
-        </tr>
-        </thead>
-        <tbody>
-        {#each dailySalesList as row}
-            <tr>
-                {#each columns as column}
-                    <td>{row[column.key]}</td>
-                {/each}
-            </tr>
-        {/each}
-        </tbody>
-    </table>
-</div>
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-6">売上データ</h1>
 
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-    label {
-        margin-right: 1rem;
-    }
-    div {
-        margin-bottom: 1rem;
-    }
-</style>
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50">
+                <tr>
+                    {#each columns as column}
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            {column.label}
+                        </th>
+                    {/each}
+                </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                {#each dailySalesList as row}
+                    <tr class="hover:bg-gray-50">
+                        {#each columns as column}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {row[column.key]}
+                            </td>
+                        {/each}
+                    </tr>
+                {/each}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
