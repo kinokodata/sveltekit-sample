@@ -118,21 +118,21 @@ describe("商品モデル", () => {
         });
 
         test("存在しないIDの場合はエラーになる", async () => {
-            await expect(update(99999, { name: '無効な更新' })).rejects.toThrow();
+            await expect(update(99999, { name: "無効な更新" })).rejects.toThrow();
         });
 
-        test('存在しないカテゴリIDの場合はエラーになる', async () => {
+        test("存在しないカテゴリIDの場合はエラーになる", async () => {
             await expect(update(testProductId, { categoryId: 999 })).rejects.toThrow();
         });
     });
 
-    describe('deleteById: 商品の削除', () => {
-        test('テスト用商品を削除できる', async () => {
+    describe("deleteById: 商品の削除", () => {
+        test("テスト用商品を削除できる", async () => {
             await expect(deleteById(testProductId)).resolves.not.toThrow();
             await expect(findById(testProductId)).rejects.toThrow();
         });
 
-        test('存在しないIDの場合はエラーになる', async () => {
+        test("存在しないIDの場合はエラーになる", async () => {
             await expect(deleteById(99999)).rejects.toThrow();
         });
     });
