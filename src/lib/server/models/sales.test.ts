@@ -1,5 +1,4 @@
 import { findSalesWhereProductId, findAll } from "./sales";
-import type {ProductCategory} from "$lib/types/productCategory";
 
 describe("日別売上モデル", () => {
     describe("findSalesWhereProductId", () => {
@@ -16,7 +15,6 @@ describe("日別売上モデル", () => {
             // 最初の売上データの構造を確認
             const firstSale = result[0];
 
-            // DailySales型の構造チェック
             // DailySales型の構造チェック
             expect(typeof firstSale.id).toBe("number");
             expect(typeof firstSale.quantity).toBe("number");
