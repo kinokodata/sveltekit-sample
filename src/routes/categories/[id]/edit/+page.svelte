@@ -23,7 +23,7 @@
             <textarea
                     name="description"
                     rows="3"
-            >{data.category.description || ''}</textarea>
+            >{data.category.description || ""}</textarea>
         </label>
     </div>
 
