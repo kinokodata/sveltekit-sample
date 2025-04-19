@@ -1,5 +1,4 @@
 import type {Product} from "$lib/types/product";
-import type {ProductCategory} from "$lib/types/productCategory";
 
 export interface DailySales {
     id: number;                 // ID

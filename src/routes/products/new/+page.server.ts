@@ -1,5 +1,5 @@
-import * as ProductCategoryModel from '$lib/server/models/productCategory';
-import { redirect } from '@sveltejs/kit';
+import * as ProductCategoryModel from "$lib/server/models/productCategory";
+import { redirect } from "@sveltejs/kit";
 
 export async function load({ params }) {
     const categories = await ProductCategoryModel.findAll();
@@ -9,9 +9,9 @@ export async function load({ params }) {
 export const actions = {
     create: async ({ request }) => {
         const formData = await request.formData();
-        const name = formData.get('name') as string;
-        const description = formData.get('description') as string;
+        const name = formData.get("name") as string;
+        const description = formData.get("description") as string;
         await ProductCategoryModel.create(name, description);
-        throw redirect(303, '/categories');
+        throw redirect(303, "/categories");
     }
 };

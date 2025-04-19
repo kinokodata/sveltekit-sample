@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount } from "svelte";
     import type { LayoutData } from "../../../../.svelte-kit/types/src/routes/$types";
     import * as cjs from "chart.js/auto";
     import type {DailySales} from "$lib/types/sales";
@@ -8,12 +8,12 @@
 
     // 色のバリエーション配列を追加
     const colors = [
-        'rgb(75, 192, 192)',   // ティール
-        'rgb(255, 99, 132)',   // ピンク
-        'rgb(255, 159, 64)',   // オレンジ
-        'rgb(54, 162, 235)',   // 青
-        'rgb(153, 102, 255)',  // 紫
-        'rgb(255, 205, 86)'   // 黄色
+        "rgb(75, 192, 192)",   // ティール
+        "rgb(255, 99, 132)",   // ピンク
+        "rgb(255, 159, 64)",   // オレンジ
+        "rgb(54, 162, 235)",   // 青
+        "rgb(153, 102, 255)",  // 紫
+        "rgb(255, 205, 86)"   // 黄色
     ];
 
     let dailySalesProducts: {productId: number, data: DailySales[]}[] = data.dailySalesProducts;
@@ -35,7 +35,7 @@
 
         // グラフの更新
         salesChart.data.labels = filteredDailySalesProducts[0].data.map(aDailySales =>
-            new Date(aDailySales.saleDate).toLocaleDateString('ja-JP')
+            new Date(aDailySales.saleDate).toLocaleDateString("ja-JP")
         );
         salesChart.data.datasets = filteredDailySalesProducts.map((productSales, index) => {
             return {
@@ -61,7 +61,7 @@
         salesChart = new cjs.Chart(
             document.getElementById("productSalesChart") as HTMLCanvasElement,
             {
-                type: 'line',
+                type: "line",
                 data: {
                     labels: [],
                     datasets: []
@@ -71,14 +71,14 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: '商品別売上推移'
+                            text: "商品別売上推移"
                         }
                     },
                     scales: {
                         y: {
                             title: {
                                 display: true,
-                                text: '売上金額（円）'
+                                text: "売上金額（円）"
                             }
                         }
                     }
