@@ -79,12 +79,12 @@ describe("商品カテゴリモデル", () => {
     });
 
     describe("deleteById: 商品カテゴリの削除", () => {
-        test('商品が紐づくカテゴリは削除できない', async () => {
+        test("商品が紐づくカテゴリは削除できない", async () => {
             // カテゴリID 1 は商品が紐づいているはず
             await expect(deleteById(1)).rejects.toThrow();
         });
 
-        test('テスト用カテゴリを削除できる', async () => {
+        test("テスト用カテゴリを削除できる", async () => {
             await expect(deleteById(testCategoryId)).resolves.not.toThrow();
             const deleted = await findById(testCategoryId);
             expect(deleted).toBeNull();

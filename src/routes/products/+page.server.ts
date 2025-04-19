@@ -11,8 +11,8 @@ export const actions = {
     // 削除アクション
     delete: async ({ request }) => {
         const formData = await request.formData();
-        const id = Number(formData.get('id'));
+        const id = Number(formData.get("id"));
         await ProductModel.deleteById(id);
-        throw redirect(303, '/products');
+        throw redirect(303, "/products");
     }
 };
