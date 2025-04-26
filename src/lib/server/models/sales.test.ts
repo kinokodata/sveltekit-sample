@@ -1,5 +1,4 @@
 import { findSalesWhereProductId, findAll } from "./sales";
-import type {ProductCategory} from "$lib/types/productCategory";
 
 describe("日別売上モデル", () => {
     describe("findSalesWhereProductId", () => {
@@ -16,7 +15,6 @@ describe("日別売上モデル", () => {
             // 最初の売上データの構造を確認
             const firstSale = result[0];
 
-            // DailySales型の構造チェック
             // DailySales型の構造チェック
             expect(typeof firstSale.id).toBe("number");
             expect(typeof firstSale.quantity).toBe("number");
@@ -56,7 +54,7 @@ describe("日別売上モデル", () => {
     });
 
     describe("findAll", () => {
-        it("全ての売上データを正しく取得できる", async () => {
+        test("全ての売上データを正しく取得できる", async () => {
             const result = await findAll();
 
             // 配列で返ってくることを確認
@@ -91,7 +89,7 @@ describe("日別売上モデル", () => {
             );
         });
 
-        it("各売上データの数値フィールドが正しい型であることを確認", async () => {
+        test("各売上データの数値フィールドが正しい型であることを確認", async () => {
             const result = await findAll();
 
             for (const sale of result) {
@@ -107,7 +105,7 @@ describe("日別売上モデル", () => {
             }
         });
 
-        it("売上金額が数量と単価の積になっていることを確認", async () => {
+        test("売上金額が数量と単価の積になっていることを確認", async () => {
             const result = await findAll();
 
             for (const sale of result) {
@@ -117,7 +115,7 @@ describe("日別売上モデル", () => {
             }
         });
 
-        it("全ての売上データが有効な商品カテゴリを持っていることを確認", async () => {
+        test("全ての売上データが有効な商品カテゴリを持っていることを確認", async () => {
             const result = await findAll();
 
             for (const sale of result) {
