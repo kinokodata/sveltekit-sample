@@ -13,14 +13,21 @@ jobs:
         working-directory: ./
 
     steps:
+      # コードのチェックアウト
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      # 環境の準備
       - name: setup node
         uses: actions/setup-node@v3
         with:
           node-version: 20
+
+      # 依存ライブラリのインストール
       - name: Install Dependencies
         run: npm install
+
+      # テストの実行
       - name: Run test
         run: npm test
         env:
